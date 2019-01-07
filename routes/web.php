@@ -11,7 +11,8 @@
 |
 */
 
-Route::middleware('auth')->group( function(){
+Route::middleware('auth')->group( function() {
+
     Route::get('/clients', 'ClientController@index')->name('clients');
     Route::get('/clients/new', 'ClientController@newClient')->name('new_client');
     Route::get('/clients/{client}', 'ClientController@show')->name('show_client');
@@ -24,7 +25,11 @@ Route::middleware('auth')->group( function(){
     Route::get('/book/room/{client}/{room}/{date_in}/{date_out}', 'ReservationsController@bookRoom')->name('book_room');
 
     Route::get('/export', 'ClientController@export');
+
+    Route::get('/upload', 'ContentsController@upload')->name('file_upload');
+    Route::post('/upload', 'ContentsController@upload')->name('file_upload');
 });
+
 
 Route::get('/', 'ContentsController@home')->name('home');
 
@@ -65,6 +70,10 @@ Route::get('/facades/decrypt', function () {
     
     return Crypt::decrypt('eyJpdiI6IjVuV1lWR3JXRlFmdGFHbXljN0Vodnc9PSIsInZhbHVlIjoibEpLQWJSdmgybDBXRHdjNDJadERwM0lZRWlLZnA5d2hcL1wvMHdCNEpCSklFPSIsIm1hYyI6ImE1NDQxZDhiMTAyNjQyNTZkOTZlY2NkZTdmNmIxYThhNjU1OTI2MGI2OTFmYWUxNmRlODk1ZDNiODgxMTY3YzAifQ==');
 }); */
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
+
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
