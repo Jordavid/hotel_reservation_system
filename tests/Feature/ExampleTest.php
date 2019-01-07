@@ -20,4 +20,16 @@ class ExampleTest extends TestCase
 
         $response->assertStatus(200);
     }
+
+    public function testPageLoaded()
+    {
+        $response = $this->get('/clients/new');
+        $response->assertStatus(200);
+    }
+
+    public function testCheckProfessorTitle()
+    {
+        $response = $this->get('/clients/new');
+        $this->assertContains('Professor', $response->getContent(), 'You Should Have Professor in the Titles');
+    }
 }

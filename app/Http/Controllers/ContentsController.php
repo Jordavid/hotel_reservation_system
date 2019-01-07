@@ -12,6 +12,7 @@ class ContentsController extends Controller
         $data = [
             'version' => '1.0.1'
         ];
-        return view('contents.home', compact('data'));
+        $last_updated = request()->session()->has('last_updated') ? request()->session()->pull('last_updated') : '';
+        return view('contents.home', compact('data', 'last_updated'));
     }
 }

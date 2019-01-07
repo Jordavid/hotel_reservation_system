@@ -11,19 +11,28 @@
 |
 */
 
+Route::middleware('auth')->group( function(){
+    Route::get('/clients', 'ClientController@index')->name('clients');
+    Route::get('/clients/new', 'ClientController@newClient')->name('new_client');
+    Route::get('/clients/{client}', 'ClientController@show')->name('show_client');
+    Route::post('/clients/new', 'ClientController@create')->name('create_client');
+    Route::put('/clients/{client}', 'ClientController@update')->name('update_client');
+    
+    Route::get('/reservations/{client}', 'RoomsController@checkAvailableRooms')->name('check_room');
+    Route::post('/reservations/{client}', 'RoomsController@checkAvailableRooms')->name('check_room');
+    
+    Route::get('/book/room/{client}/{room}/{date_in}/{date_out}', 'ReservationsController@bookRoom')->name('book_room');
+
+    Route::get('/export', 'ClientController@export');
+});
+
 Route::get('/', 'ContentsController@home')->name('home');
-Route::get('/clients', 'ClientController@index')->name('clients');
-Route::get('/clients/new', 'ClientController@newClient')->name('new_client');
-Route::get('/clients/{client}', 'ClientController@show')->name('show_client');
-Route::post('/clients/new', 'ClientController@create')->name('create_client');
-Route::put('/clients/{client}', 'ClientController@update')->name('update_client');
-
-Route::get('/reservations/{client}', 'RoomsController@checkAvailableRooms')->name('check_room');
-Route::post('/reservations/{client}', 'RoomsController@checkAvailableRooms')->name('check_room');
-
-Route::get('/book/room/{client}/{room}/{date_in}/{date_out}', 'ReservationsController@bookRoom')->name('book_room');
 
 
+Route::get('/generate', function(){
+
+    return bcrypt('123456');
+});
 /* Route::get('/about', function () {
     $response_arr = [];
     $response_arr['author'] = 'BP';
@@ -56,3 +65,6 @@ Route::get('/facades/decrypt', function () {
     
     return Crypt::decrypt('eyJpdiI6IjVuV1lWR3JXRlFmdGFHbXljN0Vodnc9PSIsInZhbHVlIjoibEpLQWJSdmgybDBXRHdjNDJadERwM0lZRWlLZnA5d2hcL1wvMHdCNEpCSklFPSIsIm1hYyI6ImE1NDQxZDhiMTAyNjQyNTZkOTZlY2NkZTdmNmIxYThhNjU1OTI2MGI2OTFmYWUxNmRlODk1ZDNiODgxMTY3YzAifQ==');
 }); */
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');

@@ -4,7 +4,7 @@
 
     <div class="row">
         <div class="medium-6 columns">
-        <h4>Landon Hotel App {{ $data['version'] }}</h4>
+        <h4>Landon Hotel App {{ $data['version'] }} updated by {{$last_updated}} </h4>
         <img class="thumbnail" src="images/attractions.jpg">
         </div>
         <div class="medium-6 large-5 columns">

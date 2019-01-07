@@ -22,6 +22,13 @@ class ClientController extends Controller
         return view('client.index', compact('clients'));
     }
 
+    public function export()
+    {
+        $clients = Client::all();
+        header('Content-Disposition: attachement;filename=export.xls');
+        return view('client.export', compact('clients'));
+    }
+
     public function newClient(Client $client)
     {
         $clientRecords = $client;
@@ -45,6 +52,7 @@ class ClientController extends Controller
         $clientRecords = Client::findOrFail($client);
         $titles = $this->titles;
         $modify = 1;
+        request()->session()->put('last_updated', $clientRecords->name. ' ' .$clientRecords->last_name );
         return view('client.form', compact('titles', 'modify', 'clientRecords'));
     }
 
