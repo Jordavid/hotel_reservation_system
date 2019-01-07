@@ -26,18 +26,20 @@ Route::middleware('auth')->group( function() {
 
     Route::get('/export', 'ClientController@export');
 
+
+    Route::get('/', 'ContentsController@home')->name('home');
     Route::get('/upload', 'ContentsController@upload')->name('file_upload');
     Route::post('/upload', 'ContentsController@upload')->name('file_upload');
 });
 
 
-Route::get('/', 'ContentsController@home')->name('home');
 
 
-Route::get('/generate', function(){
+
+/* Route::get('/generate', function(){
 
     return bcrypt('123456');
-});
+}); */
 /* Route::get('/about', function () {
     $response_arr = [];
     $response_arr['author'] = 'BP';
