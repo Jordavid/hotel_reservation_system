@@ -8,7 +8,22 @@
             <link rel="stylesheet" href="{{asset('css/app.css') }}">
             <link rel="stylesheet" href="{{asset('pickadate/lib/themes/default.css') }}">
             <link rel="stylesheet" href="{{asset('pickadate/lib/themes/default.date.css') }}">
-    <meta class="foundation-mq"></head>
+    <meta class="foundation-mq">
+    <style>
+      video{
+        height: 300px;
+        width: 500px;
+      }
+button {
+  display: block;
+  font-size: 1rem;
+  margin-bottom: 0.5rem;
+  padding: 1rem;
+  border-radius: 6px;
+  cursor: pointer;
+}
+    </style>
+  </head>
     <body>
 
         <!-- Start Top Bar -->
@@ -18,7 +33,8 @@
           <ul class="dropdown menu" data-dropdown-menu="tckp8q-dropdown-menu" role="menubar">
             <li role="menuitem"><a href="/">Home</a></li>
             <li role="menuitem"><a href="/clients">Clients</a></li>
-            <li role="menuitem"><a href="/upload">Upload</a></li>
+            <li role="menuitem"><a href="/upload">Upload Image</a></li>
+            <li role="menuitem"><a href="/upload/video">Upload Video</a></li>
           </ul>
         </div>
         <div class="top-bar-right">

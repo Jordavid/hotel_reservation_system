@@ -27,4 +27,19 @@ class ContentsController extends Controller
         }
         return view('contents.upload');
     }
+
+    public function uploadVideo(Request $request)
+    {
+        $method = $request->method();
+
+        if($method == "POST"){
+            $this->validate($request, [
+                'video_upload' => 'required|mimes:mp4,ogg,webm'
+            ]);
+            Input::file('video_upload')->move('videos', 'advertisement.mp4');
+            return redirect('/');
+        }
+     
+        return view('contents.vidupload');
+    }
 }

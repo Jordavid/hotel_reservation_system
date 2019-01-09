@@ -30,6 +30,8 @@ Route::middleware('auth')->group( function() {
     Route::get('/', 'ContentsController@home')->name('home');
     Route::get('/upload', 'ContentsController@upload')->name('file_upload');
     Route::post('/upload', 'ContentsController@upload')->name('file_upload');
+    Route::get('/upload/video', 'ContentsController@uploadVideo')->name('video');
+    Route::post('/upload/video', 'ContentsController@uploadVideo')->name('video');
 });
 
 
